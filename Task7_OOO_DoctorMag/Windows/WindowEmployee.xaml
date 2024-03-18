@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:Task7_OOO_DoctorMag.Windows"
         mc:Ignorable="d"
         Title="WindowEmployee" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+
+    <Window.Resources>
+        <Style TargetType="ListViewItem">
+            <Style.Setters>
+                <Setter Property="Background" Value="White" />
+            </Style.Setters>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding StatusIdStatusNavigation.StatusName}" Value="В отпуске">
+                    <Setter Property="ListViewItem.Background" Value="Gray" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding StatusIdStatusNavigation.StatusName}" Value="В командировке">
+                    <Setter Property="ListViewItem.Background" Value="Gray" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Style="{StaticResource gridBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
             <RowDefinition Height="359*"/>

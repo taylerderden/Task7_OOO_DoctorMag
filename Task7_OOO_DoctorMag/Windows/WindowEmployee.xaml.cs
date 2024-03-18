@@ -100,14 +100,14 @@ namespace Task7_OOO_DoctorMag.Windows
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
             Doctor doctor = ListViewDoctor.SelectedItem as Doctor;
-            if (doctor != null)
+            if (doctor != null && doctor.StatusIdStatus != 2 && doctor.StatusIdStatus != 3)
             {
                 Window_AddVisit window_AddVisit = new Window_AddVisit(new Visit(),doctor.IdDoctor);
                 window_AddVisit.Show();
                 this.Close();
             }
             else
-                MessageBox.Show("Выбери врача!");
+                MessageBox.Show("Выбери присутствующего врача!");
         }
 
         private void btnVisit_Click(object sender, RoutedEventArgs e)
