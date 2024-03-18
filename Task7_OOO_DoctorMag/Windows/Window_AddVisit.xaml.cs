@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,12 +48,12 @@ namespace Task7_OOO_DoctorMag.Windows
             if (cbPacient.Text != "" && tbDateVisit.Text != "" && tbTimeVisit.Text != "" && cbType.Text != "")
             {
                 Pacient pacients = CoreModel.init().Pacients.FirstOrDefault(p => p.PacientPolis.Contains(cbPacient.Text));
-                visit.PacientIdPacient = pacients.IdPacient;
+                
                 visit.DoctorIdDoctor = idDoc;
                 string thisDay = DateTime.Now.ToShortDateString();
                 DateOnly dateRec = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
                 visit.VisitDateRecording = dateRec;
-                DateOnly dateVisit = DateOnly.Parse(tbDateVisit.Text); ;
+                DateOnly dateVisit = DateOnly.Parse(tbDateVisit.Text); 
                 visit.VisitDate = dateVisit;
 
                 CoreModel.init().Visits.Add(visit);
@@ -73,7 +74,8 @@ namespace Task7_OOO_DoctorMag.Windows
             Pacient pacients = CoreModel.init().Pacients.FirstOrDefault(p => p.PacientPolis.Contains(cbPacient.Text));
             if (pacients != null)
             {
-                tblockPacient.Text = pacients.PacientSurname + " " + pacients.PacientName + " " + pacients.PacientPatronymic;
+                tblockPacient.Text = pacients.PacientSurname + " " + pacients.PacientName + " " + pacients.PacientPatronymic;              
+                visit.PacientIdPacient = pacients.IdPacient;
             }
             
         }
