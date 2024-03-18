@@ -1,0 +1,81 @@
+﻿<Window x:Class="Task7_OOO_DoctorMag.Windows.Window_Visit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task7_OOO_DoctorMag.Windows"
+        mc:Ignorable="d"
+        Title="Window_Visit" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="359*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="4">
+            <TextBox Margin="10" Name="Search" TextChanged="SearchChange" FontSize="8"/>
+            <ComboBox Margin="10" Name="Sort" SelectionChanged="SortChange" FontSize="8"/>
+            <ComboBox Margin="10" Name="FiltrStatus" SelectedItem="{Binding Status}" DisplayMemberPath="StatusName" SelectionChanged="FiltrStatusChange" FontSize="8"/>
+            <ComboBox Margin="10" Name="FiltrType" SelectedItem="{Binding TypeVisit}" DisplayMemberPath="TypeVisitName" SelectionChanged="FiltrTypeChange" FontSize="8"/>
+        </UniformGrid>
+        <ListView Name="ListViewVisit" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid HorizontalAlignment="Left">
+                                <Image Source="{Binding DoctorIdDoctorNavigation.DoctorPhoto, TargetNullValue={StaticResource Picture}}" Width="200" Height="100"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <WrapPanel>
+                                    <TextBlock FontSize="20">
+                                        <Run Text="{Binding DoctorIdDoctorNavigation.DoctorSurname}"/>
+                                        <Run Text="{Binding DoctorIdDoctorNavigation.DoctorName}"/>
+                                        <Run Text="{Binding DoctorIdDoctorNavigation.DoctorPatronymic}"/>
+                                    </TextBlock>
+                                </WrapPanel>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="Режим работы: " FontSize="15">
+                                        <Run Text="{Binding DoctorIdDoctorNavigation.DoctorSchedule}"/>
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="10">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="Направление: " FontSize="20">
+                                    <Run Text="{Binding DoctorIdDoctorNavigation.PositionIdPositionNavigation.PositionName}"/> 
+                                </TextBlock>
+                                <TextBlock Text="Посетитель: " FontSize="20">
+                                    <Run Text="{Binding PacientIdPacientNavigation.PacientSurname}"/>
+                                    <Run Text="{Binding PacientIdPacientNavigation.PacientName}"/>
+                                    <Run Text="{Binding PacientIdPacientNavigation.PacientPatronymic}"/>
+                                </TextBlock>
+                                <TextBlock Text="Тип посещения: " FontSize="20">
+                                    <Run Text="{Binding DoctorIdDoctorNavigation.TypeVisitIdTypeVisitNavigation.TypeVisitName}"/>
+                                </TextBlock>
+                                <TextBlock Text="Дата/время записи: " FontSize="20" Name="tbDateTime">
+                                    <Run Text="{Binding VisitDate, StringFormat=d}"/>
+                                    <Run Text="{Binding VisitTime}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <UniformGrid Grid.Row="2" Columns="1">
+            <Button Content="Врачи" Click="btnDoctors_Click"  FontSize="15" Width="150" Height="25"  Style="{StaticResource button}" />
+        </UniformGrid>
+    </Grid>
+</Window>

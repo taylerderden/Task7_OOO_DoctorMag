@@ -1,0 +1,82 @@
+﻿<Window x:Class="Task7_OOO_DoctorMag.Windows.WindowEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task7_OOO_DoctorMag.Windows"
+        mc:Ignorable="d"
+        Title="WindowEmployee" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="359*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="4">
+            <TextBox Margin="10" Name="Search" TextChanged="SearchChange" FontSize="8"/>
+            <ComboBox Margin="10" Name="Sort" SelectionChanged="SortChange" FontSize="8"/>
+            <ComboBox Margin="10" Name="FiltrStatus" SelectedItem="{Binding Status}" DisplayMemberPath="StatusName" SelectionChanged="FiltrStatusChange" FontSize="8"/>
+            <ComboBox Margin="10" Name="FiltrType" SelectedItem="{Binding TypeVisit}" DisplayMemberPath="TypeVisitName" SelectionChanged="FiltrTypeChange" FontSize="8"/>
+        </UniformGrid>
+        <ListView Name="ListViewDoctor" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid HorizontalAlignment="Left">
+                                <Image Source="{Binding DoctorPhoto, TargetNullValue={StaticResource Picture}}" Width="200" Height="100"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <WrapPanel>
+                                    <TextBlock FontSize="20">
+                                        <Run Text="{Binding DoctorSurname}"/>
+                                    </TextBlock>
+                                    <TextBlock Text=" " FontSize="20"/>
+                                    <TextBlock FontSize="20">
+                                        <Run Text="{Binding DoctorName}"/>
+                                    </TextBlock>
+                                    <TextBlock Text=" " FontSize="20"/>
+                                    <TextBlock FontSize="20">
+                                        <Run Text="{Binding DoctorPatronymic}"/>
+                                    </TextBlock>
+                                </WrapPanel>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="Режим работы: " FontSize="15">
+                                        <Run Text="{Binding DoctorSchedule}"/>
+                                    </TextBlock>
+                                </StackPanel>
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="10">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="Направление: " FontSize="20">
+                                    <Run Text="{Binding PositionIdPositionNavigation.PositionName}"/>
+                                </TextBlock>
+                                <TextBlock Text="Тип посещения: " FontSize="20">
+                                    <Run Text="{Binding TypeVisitIdTypeVisitNavigation.TypeVisitName}"/>
+                                </TextBlock>
+                                <TextBlock Text="Статус: " FontSize="20">
+                                    <Run Text="{Binding StatusIdStatusNavigation.StatusName}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <UniformGrid Grid.Row="2" Columns="2">
+            <Button Content="Добавить запись" Click="Add_Button_Click"  FontSize="15" Width="150" Height="25"  Style="{StaticResource button}" />
+            <Button Content="Записи" Click="btnVisit_Click"  FontSize="15" Width="150" Height="25"  Style="{StaticResource button}" />
+        </UniformGrid>
+    </Grid>
+</Window>

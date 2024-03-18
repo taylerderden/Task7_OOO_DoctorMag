@@ -1,0 +1,38 @@
+﻿<Window x:Class="Task7_OOO_DoctorMag.Windows.Window_AddVisit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task7_OOO_DoctorMag.Windows"
+        mc:Ignorable="d"
+        Title="Window_AddVisit" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="281*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Margin="20">
+            <ComboBox Name="cbPacient" Height="50" SelectedItem="{Binding Pacient}" DisplayMemberPath="PacientPolis" SelectionChanged="cbPacient_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
+            <TextBox x:Name="tbDoctor" Height="50"/>
+            <TextBox x:Name="tbDateVisit" Height="50"/>
+            <TextBox x:Name="tbTimeVisit" Height="50" Text="{Binding VisitTime}"/>
+            <ComboBox x:Name="cbType" Height="50" SelectedItem="{Binding TypeVisitIdTypeVisitNavigation}" DisplayMemberPath="TypeVisitName"/>
+            <TextBlock x:Name="tblockPacient" Style="{StaticResource normalText}" Height="50" FontSize="25"/>
+        </StackPanel>
+        
+        <StackPanel VerticalAlignment="Center" Height="296">
+            <TextBlock Style="{StaticResource normalText}" Text="Полис" Height="50"  FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Доктор"  Height="50" FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Дата посещения" Height="50" FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Время записи" Height="50" FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Тип посещения" Height="50" FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Пациент" Height="50" FontSize="25"/>
+        </StackPanel>
+        
+        <Button Style="{StaticResource button}" Grid.Row="1" Grid.Column="1" Content="Save" Click="Button_SaveClick" Margin="156,10,156,27"/>
+    </Grid>
+</Window>

@@ -1,0 +1,36 @@
+﻿<Application x:Class="Task7_OOO_DoctorMag.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Task7_OOO_DoctorMag"
+             StartupUri="AuthorizationWindow.xaml">
+    <Application.Resources>
+        <BitmapImage x:Key="Picture" UriSource="\Resources\Photo\Котик.jpg"/>
+
+        <Style x:Key="titleText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontFamily" Value="ComicSans"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#8A84E2"/>
+        </Style>
+
+        <Style x:Key="normalText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="LineHeight" Value="28"/>
+            <Setter Property="FontFamily" Value="ComicSans"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#8A84E2"/>
+        </Style>
+
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Background" Value="#8A84E2"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style x:Key="gridBackground" TargetType="Grid">
+            <Setter Property="Background" Value="#FFB7D3F2"/>
+        </Style>
+    </Application.Resources>
+</Application>
